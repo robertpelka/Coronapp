@@ -13,6 +13,7 @@
 		48FBC46B252E652E002F63B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FBC469252E652E002F63B1 /* Main.storyboard */; };
 		48FBC46D252E6532002F63B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FBC46C252E6532002F63B1 /* Assets.xcassets */; };
 		48FBC470252E6532002F63B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FBC46E252E6532002F63B1 /* LaunchScreen.storyboard */; };
+		48FBC47E252E6EBC002F63B1 /* CoronaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FBC47D252E6EBC002F63B1 /* CoronaManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		48FBC46C252E6532002F63B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48FBC46F252E6532002F63B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48FBC471252E6532002F63B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48FBC47D252E6EBC002F63B1 /* CoronaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +60,38 @@
 			children = (
 				48FBC463252E652E002F63B1 /* AppDelegate.swift */,
 				48FBC465252E652E002F63B1 /* SceneDelegate.swift */,
-				48FBC467252E652E002F63B1 /* ViewController.swift */,
-				48FBC469252E652E002F63B1 /* Main.storyboard */,
+				48FBC478252E6553002F63B1 /* Model */,
+				48FBC479252E655B002F63B1 /* View */,
+				48FBC47A252E655F002F63B1 /* Controller */,
 				48FBC46C252E6532002F63B1 /* Assets.xcassets */,
 				48FBC46E252E6532002F63B1 /* LaunchScreen.storyboard */,
 				48FBC471252E6532002F63B1 /* Info.plist */,
 			);
 			path = Coronapp;
+			sourceTree = "<group>";
+		};
+		48FBC478252E6553002F63B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48FBC47D252E6EBC002F63B1 /* CoronaManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		48FBC479252E655B002F63B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				48FBC469252E652E002F63B1 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		48FBC47A252E655F002F63B1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				48FBC467252E652E002F63B1 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +167,7 @@
 				48FBC468252E652E002F63B1 /* ViewController.swift in Sources */,
 				48FBC464252E652E002F63B1 /* AppDelegate.swift in Sources */,
 				48FBC466252E652E002F63B1 /* SceneDelegate.swift in Sources */,
+				48FBC47E252E6EBC002F63B1 /* CoronaManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
