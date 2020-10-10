@@ -11,9 +11,12 @@ import CoreLocation
 class ViewController: UIViewController {
     
     let locationManager = CLLocationManager()
+    let coronaManager = CoronaManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        coronaManager.fetchData()
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()

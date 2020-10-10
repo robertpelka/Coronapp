@@ -8,8 +8,8 @@
 import Foundation
 
 struct CoronaData: Decodable {
-    let global: Global
-    let countries: [Countries]
+    let Global: Global
+    let Countries: [Countries]
 }
 
 struct Global: Decodable {
