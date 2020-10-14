@@ -20,6 +20,7 @@ struct Global: Decodable {
 }
 
 struct Countries: Decodable {
+    let Country: String
     let CountryCode: String
     let NewConfirmed: Int
     let TotalConfirmed: Int

@@ -16,8 +16,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        coronaManager.fetchData()
-        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
     }
@@ -27,8 +25,11 @@ class ViewController: UIViewController {
 //MARK: - CLLocationManagerDelegate
 
 extension ViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        locationManager.requestLocation()
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if manager.authorizationStatus == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -40,7 +41,8 @@ extension ViewController: CLLocationManagerDelegate {
                 }
                 else {
                     if let place = placeMark?[0]{
-                        print(place.isoCountryCode!)
+                        let countryCode = place.isoCountryCode!
+                        self.coronaManager.fetchData(for: countryCode)
                     }
                 }
             }

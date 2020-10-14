@@ -15,6 +15,7 @@
 		48FBC470252E6532002F63B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FBC46E252E6532002F63B1 /* LaunchScreen.storyboard */; };
 		48FBC47E252E6EBC002F63B1 /* CoronaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FBC47D252E6EBC002F63B1 /* CoronaManager.swift */; };
 		48FBC482253230D5002F63B1 /* CoronaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FBC481253230D5002F63B1 /* CoronaData.swift */; };
+		48FBC48725346A8E002F63B1 /* CoronaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FBC48625346A8E002F63B1 /* CoronaModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		48FBC471252E6532002F63B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48FBC47D252E6EBC002F63B1 /* CoronaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaManager.swift; sourceTree = "<group>"; };
 		48FBC481253230D5002F63B1 /* CoronaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaData.swift; sourceTree = "<group>"; };
+		48FBC48625346A8E002F63B1 /* CoronaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				48FBC47D252E6EBC002F63B1 /* CoronaManager.swift */,
 				48FBC481253230D5002F63B1 /* CoronaData.swift */,
+				48FBC48625346A8E002F63B1 /* CoronaModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48FBC468252E652E002F63B1 /* ViewController.swift in Sources */,
+				48FBC48725346A8E002F63B1 /* CoronaModel.swift in Sources */,
 				48FBC464252E652E002F63B1 /* AppDelegate.swift in Sources */,
 				48FBC466252E652E002F63B1 /* SceneDelegate.swift in Sources */,
 				48FBC47E252E6EBC002F63B1 /* CoronaManager.swift in Sources */,
