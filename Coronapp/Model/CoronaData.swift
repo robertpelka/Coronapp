@@ -17,6 +17,8 @@ struct Global: Decodable {
     let TotalConfirmed: Int
     let NewDeaths: Int
     let TotalDeaths: Int
+    let NewRecovered: Int
+    let TotalRecovered: Int
 }
 
 struct Countries: Decodable {
@@ -26,5 +28,7 @@ struct Countries: Decodable {
     let TotalConfirmed: Int
     let NewDeaths: Int
     let TotalDeaths: Int
+    let NewRecovered: Int
+    let TotalRecovered: Int
     let Date: String
 }

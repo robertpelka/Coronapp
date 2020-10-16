@@ -7,22 +7,69 @@
 
 import Foundation
 
+protocol CoronaManagerDelegate {
+    func didUpdateGlobalStats(coronaManager: CoronaManager, stats: GlobalModel)
+    func didUpdateStats(coronaManager: CoronaManager, stats: CoronaModel)
+    func didFailWithError(error: Error)
+}
+
 struct CoronaManager {
     let url = URL(string: "https://api.covid19api.com/summary")
+    
+    var delegate: CoronaManagerDelegate?
+    
+    func fetchData() {
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
+                self.delegate?.didFailWithError(error: error!)
+                return
+            }
+            if let safeData = data {
+                if let data = self.parseJSON(coronaData: safeData) {
+                    let statisticsGlobal = GlobalModel(NewConfirmed: data.Global.NewConfirmed, TotalConfirmed: data.Global.TotalConfirmed, NewDeaths: data.Global.NewDeaths, TotalDeaths: data.Global.TotalDeaths, NewRecovered: data.Global.NewRecovered, TotalRecovered: data.Global.TotalRecovered)
+                    self.delegate?.didUpdateGlobalStats(coronaManager: self, stats: statisticsGlobal)
+                }
+            }
+        }
+        task.resume()
+    }
     
     func fetchData(for countryCode: String) {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url!) { (data, response, error) in
             if error != nil {
-                print(error!)
+                self.delegate?.didFailWithError(error: error!)
                 return
             }
             if let safeData = data {
                 if let data = self.parseJSON(coronaData: safeData) {
                     if let found = data.Countries.first(where: {$0.CountryCode == countryCode}) {
-                        let statistics = CoronaModel(Country: found.Country, CountryCode: found.CountryCode, NewConfirmed: found.NewConfirmed, TotalConfirmed: found.NewConfirmed, NewDeaths: found.NewDeaths, TotalDeaths: found.TotalDeaths, Date: found.Date, NewConfirmedGlobal: data.Global.NewConfirmed, TotalConfirmedGlobal: data.Global.TotalConfirmed, NewDeathsGlobal: data.Global.NewDeaths, TotalDeathsGlobal: data.Global.TotalDeaths)
+                        let statistics = CoronaModel(Country: found.Country, CountryCode: found.CountryCode, NewConfirmed: found.NewConfirmed, TotalConfirmed: found.TotalConfirmed, NewDeaths: found.NewDeaths, TotalDeaths: found.TotalDeaths, NewRecovered: found.NewRecovered, TotalRecovered: found.TotalRecovered, Date: found.Date)
+                        self.delegate?.didUpdateStats(coronaManager: self, stats: statistics)
                     } else {
-                        print("Error - countryCode not found")
+                        self.delegate?.didFailWithError(error: "Error - countryCode not found" as! Error)
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchDataFullName(for country: String) {
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
+                self.delegate?.didFailWithError(error: error!)
+                return
+            }
+            if let safeData = data {
+                if let data = self.parseJSON(coronaData: safeData) {
+                    if let found = data.Countries.first(where: {$0.Country == country}) {
+                        let statistics = CoronaModel(Country: found.Country, CountryCode: found.CountryCode, NewConfirmed: found.NewConfirmed, TotalConfirmed: found.TotalConfirmed, NewDeaths: found.NewDeaths, TotalDeaths: found.TotalDeaths, NewRecovered: found.NewRecovered, TotalRecovered: found.TotalRecovered, Date: found.Date)
+                        self.delegate?.didUpdateStats(coronaManager: self, stats: statistics)
+                    } else {
+                        //komunikat nie znaleziono
                     }
                 }
             }
@@ -37,7 +84,7 @@ struct CoronaManager {
             return decodedData
         }
         catch let jsonError as NSError {
-            print(jsonError)
+            self.delegate?.didFailWithError(error: jsonError)
             return nil
         }
     }

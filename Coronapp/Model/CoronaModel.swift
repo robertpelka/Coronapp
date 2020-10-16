@@ -14,9 +14,16 @@ struct CoronaModel {
     let TotalConfirmed: Int
     let NewDeaths: Int
     let TotalDeaths: Int
+    let NewRecovered: Int
+    let TotalRecovered: Int
     let Date: String
-    let NewConfirmedGlobal: Int
-    let TotalConfirmedGlobal: Int
-    let NewDeathsGlobal: Int
-    let TotalDeathsGlobal: Int
+}
+
+struct GlobalModel {
+    let NewConfirmed: Int
+    let TotalConfirmed: Int
+    let NewDeaths: Int
+    let TotalDeaths: Int
+    let NewRecovered: Int
+    let TotalRecovered: Int
 }
