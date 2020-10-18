@@ -129,6 +129,17 @@ extension ViewController: CoronaManagerDelegate {
         print(error)
     }
     
+    func countryNotFound(country: String) {
+        DispatchQueue.main.async {
+            let myAlert: UIAlertController = UIAlertController(title: "Country not found", message: "Sorry, we couldn't find " + country + ". Please try again.", preferredStyle: .alert)
+            let tryAgain = UIAlertAction(title: "OK", style: .cancel, handler: { action in self.searchBar.becomeFirstResponder() })
+            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            myAlert.addAction(tryAgain)
+            myAlert.addAction(cancel)
+            self.present(myAlert, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 //MARK: - UISearchBarDelegate
