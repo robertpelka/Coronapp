@@ -66,7 +66,10 @@ struct CoronaManager {
             }
             if let safeData = data {
                 if let data = self.parseJSON(coronaData: safeData) {
-                    if let found = data.Countries.first(where: {$0.Country.lowercased() == country.lowercased()}) {
+                    if let found = data.Countries.first(where: {$0.CountryCode.lowercased() == country.lowercased()}) {
+                        let statistics = CoronaModel(Country: found.Country, CountryCode: found.CountryCode, NewConfirmed: found.NewConfirmed, TotalConfirmed: found.TotalConfirmed, NewDeaths: found.NewDeaths, TotalDeaths: found.TotalDeaths, NewRecovered: found.NewRecovered, TotalRecovered: found.TotalRecovered, Date: found.Date)
+                        self.delegate?.didUpdateStats(coronaManager: self, stats: statistics)
+                    } else if let found = data.Countries.first(where: {$0.Country.lowercased().hasPrefix(country.lowercased())}) {
                         let statistics = CoronaModel(Country: found.Country, CountryCode: found.CountryCode, NewConfirmed: found.NewConfirmed, TotalConfirmed: found.TotalConfirmed, NewDeaths: found.NewDeaths, TotalDeaths: found.TotalDeaths, NewRecovered: found.NewRecovered, TotalRecovered: found.TotalRecovered, Date: found.Date)
                         self.delegate?.didUpdateStats(coronaManager: self, stats: statistics)
                     } else {
