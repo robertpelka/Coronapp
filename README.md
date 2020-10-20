@@ -5,7 +5,7 @@
 </p>
 
 ###### EN
-App that shows COVID-19 statistics. It uses COVID19 API to download the latest statistics and location to show data for a country in which user is located. It is also possible to search for a specific country by its name or code. After pressing the button app shows statistics fot the whole world. 
+It's an app that shows COVID-19 statistics. It uses COVID19 API to download the latest statistics and location to show data for a country in which user is located. It is also possible to search for a specific country by its name or code. After pressing the button app shows statistics fot the whole world. 
 
 ###### PL
 Aplikacja, która pokazuje statystyki dotyczące COVID-19. Używa ona COVID19 API do pobrania najnowszych statystyk, a także lokalizacji w celu pokazania danych dla kraju użytkownika. Istnieje również możliwość wyszukania kraju po jego nazwie lub kodzie. Po naciśnięciu przycisku aplikacja pokazuje statystyki dla całego świata.
